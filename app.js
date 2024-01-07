@@ -7,6 +7,13 @@
             author: 'Tony Lee',
             age: '32'
         }
+    },
+    methods: {
+        changeTitle(title) {
+            // this.title = 'Words of Randiance'
+            this.title = title
+            console.log('you clicked me')
+        }
     }
 
  })
