@@ -20,7 +20,12 @@
     <h1> Hello vue</h1>
     <div id="app">
         <div v-if="showBooks">
-            <p>{{ title }} - {{ author }} - {{ age }}</p>
+            <ul>
+                <li v-for="book in books">
+                    <h3>title: {{ book.title }} </h3>
+                    <h3>author: {{ book.author }}</h3>
+                </li>
+            </ul>
         </div>
 
         <button @click="toggleShowBooks">
@@ -28,14 +33,6 @@
             <!-- <span v-if="!showBooks">Hide Books</span> -->
             <span v-else>Show Books</span>
         </button>
-
-        <div v-show="showBooks">currently showing books</div>
-        
-        <!--mouse event-->
-        <div class="box" v-on:mouseover="handleEvent($event, 5)">mouseover (enter)</div>
-        <div class="box" v-on:mouseleave="handleEvent">mosueleave</div>
-        <div class="box" v-on:dblclick="handleEvent">double click</div>
-        <div class="box" v-on:mousemove="handleMousemove">position - {{ x }} {{ y }}</div>
     </div>
 
     <script src=app.js></script>
