@@ -5,6 +5,16 @@
     <title>Document</title>
     <!--<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>-->
     <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+        .box {
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background: #ddd;
+            margin: 20px;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
     <h1> Hello vue</h1>
@@ -20,6 +30,12 @@
         </button>
 
         <div v-show="showBooks">currently showing books</div>
+        
+        <!--mouse event-->
+        <div class="box" v-on:mouseover="handleEvent($event, 5)">mouseover (enter)</div>
+        <div class="box" v-on:mouseleave="handleEvent">mosueleave</div>
+        <div class="box" v-on:dblclick="handleEvent">double click</div>
+        <div class="box" v-on:mousemove="handleMousemove">position - {{ x }} {{ y }}</div>
     </div>
 
     <script src=app.js></script>
