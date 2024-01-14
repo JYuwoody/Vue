@@ -16,6 +16,9 @@
         toggleShowBooks() {
             this.showBooks = !this.showBooks
         },
+        toggleFav(book) {
+            book.isFav = !book.isFav
+        }
     }
 
  })
