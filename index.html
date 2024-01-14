@@ -19,9 +19,13 @@
 <body>
     <h1> Hello vue</h1>
     <div id="app">
+        <!-- attribute binding -->
+        <a v-bind:href="url">My github</a>
+
         <div v-if="showBooks">
             <ul>
                 <li v-for="book in books">
+                    <img :src="book.img" :alt="book.title">
                     <h3>title: {{ book.title }} </h3>
                     <h3>author: {{ book.author }}</h3>
                 </li>
