@@ -1,12 +1,30 @@
 <template>
-  <div class="woodyblock">
+  <div class="woodyblock" v-if="showWoodyBlock">
     clock me
   </div>
 </template>
 
 <script>
 export default {
-    props: ['delay']
+    props: ['delay'],
+    data() {
+      return {
+        showWoodyBlock: false
+      }
+    },
+    mounted() {
+      console.log('component mounted')
+      setTimeout(() => {
+        this.showWoodyBlock = true
+        console.log(this.delay)
+      }, this.delay)
+    },
+    updated() {
+      console.log('component updated')
+    },
+    unmounted() {
+      console.log('component unmounted')
+    }
 }
 </script>
 
