@@ -2,15 +2,18 @@
   <h1>Ninja Reaction Timer</h1>
   <button @click="start" :disabled="isPlaying">play</button>
   <WoodyBlock v-if="isPlaying" :delay="delay" @end="endGame"/>
-  <p v-if="showResults">Reaction Time: {{ score }} ms</p>
+  <WoodyResults v-if="showResults" :score="score" />
 </template>
 
 <script>
+// - when the game ends, show the results component
+// - output the score inside the results component
 import WoodyBlock from './components/WoodyBlock.vue'
+import WoodyResults from './components/WoodyResults.vue'
 
 export default {
   name: 'App',
-  components: { WoodyBlock },
+  components: { WoodyBlock, WoodyResults },
   data() {
     return {
       isPlaying: false,
