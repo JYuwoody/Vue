@@ -1,5 +1,5 @@
 <template>
-  <div class="woodyblock" v-if="showWoodyBlock">
+  <div class="woodyblock" v-if="showWoodyBlock" @click="stopTimer">
     clock me
   </div>
 </template>
@@ -9,22 +9,36 @@ export default {
     props: ['delay'],
     data() {
       return {
-        showWoodyBlock: false
+        showWoodyBlock: false,
+        timer: null,
+        reactionTime: 0
       }
     },
     mounted() {
-      console.log('component mounted')
+      // console.log('component mounted')
       setTimeout(() => {
         this.showWoodyBlock = true
-        console.log(this.delay)
+        this.startTimer()
+        // console.log(this.delay)
       }, this.delay)
     },
-    updated() {
-      console.log('component updated')
-    },
-    unmounted() {
-      console.log('component unmounted')
+    methods: {
+      startTimer() {
+        this.timer = setInterval(() => {
+          this.reactionTime += 10
+        }, 10)
+      },
+      stopTimer() {
+        clearInterval(this.timer)
+        console.log(this.reactionTime)
+      }
     }
+    // updated() {
+    //   console.log('component updated')
+    // },
+    // unmounted() {
+    //   console.log('component unmounted')
+    // }
 }
 </script>
 
