@@ -1,44 +1,27 @@
 <template>
   <div class="home">
     <h1> Home  </h1>
-    <h2> Refs </h2>
-    <p>{{ woodyOne.name }} - {{ woodyOne.age }}</p>
-    <button @click="updatewoodyOne"> Update Woody One</button>
-    <h2> Reactive</h2>
-    <p>{{ woodyTwo.name }} - {{ woodyTwo.age }} - {{ nameTwo }}</p>
-    <button @click="updatewoodyTwo"> Update Woody Two</button>
+    <input type="text" v-model="search">
+    <p>search term - {{ search }}</p>
+    <div v-for="name in matchingNames" :key="name"> {{ name }}</div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { ref, reactive } from 'vue'
+import { computed, ref } from 'vue'
 
 export default {
   name: 'HomeView',
   setup() {
-    const woodyOne = ref({ name: 'mario', age: 20})
-    const woodyTwo = reactive({name: 'luigi', age: 25 })
+    const search = ref('')
+    const names = ref(['mario', 'yoshi', 'luigi', 'toad', 'bowser', 'koopa', 'peach'])
 
+    const matchingNames = computed(() =>{
+      return names.value.filter((name) => name.includes(search.value))
+    })
 
-    const nameOne = ref('mario')
-    const nameTwo = reactive('luigi')
-
-
-    const updatewoodyOne =() => {
-      woodyOne.value.age = 30
-    }
-
-    const updatewoodyTwo =() => {
-      woodyTwo.age = 30
-      nameTwo = 'mario' // It can not update
-    }
-    return { woodyOne, updatewoodyOne, woodyTwo, updatewoodyTwo, nameTwo}
-  },
-  data() {
-    return {
-      score: 5
-    }
+    return { names, search, matchingNames }
   },
   components: {}
 }
