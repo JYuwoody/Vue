@@ -8,12 +8,15 @@
 </template>
 
 <script>
+import { onMounted, onUnmounted, onUpdated } from 'vue'
 import SingkePost from '../components/SingkePost.vue'
 export default {
     components: { SingkePost },
     props: ['posts'],
     setup(props) {
-        console.log(props.posts)
+        onMounted(() => console.log('component mounted')) 
+        onUnmounted(() => console.log('component unmounted')) 
+        onUpdated(() => console.log('component updated')) 
     }
 }
 </script>
