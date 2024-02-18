@@ -1,6 +1,6 @@
 <template>
   <h3>Add new transcation</h3>
-  <form id="form">
+  <form id="form" @submit.prevent="onSubmit">
     <div class="form-control">
         <label for="text">Text</label>
         <input type="text" id="text" placeholder="Enter text...">
@@ -16,9 +16,9 @@
   </form>
 </template>
 
-<script>
-export default {
-
+<script setup>
+const onSubmit = () => {
+  console.log('submit')
 }
 </script>
 

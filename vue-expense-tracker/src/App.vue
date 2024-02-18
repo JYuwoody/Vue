@@ -2,7 +2,7 @@
   <Header />
   <div class="contain">
     <Balance :total="total"/>
-      <IncomeExpenses :income="income" :expenses="expenses" />
+      <IncomeExpenses :income="+income" :expenses="-expenses" />
       <TransactionList :transactions="transactions" />
       <AddTransaction />
   </div>
