@@ -71,6 +71,8 @@ const handleTransactionSubmitted = (transactionData) => {
     amount: transactionData.amount
   })
 
+  saveTransactionsToLocalStorage()
+
   toast.success('Transaction added')
 }
 
@@ -84,7 +86,15 @@ const handleTransactionDeleted = (id) => {
   // console.log(id)
   transactions.value = transactions.value.filter((transaction) => transaction.id !== id)
 
+  saveTransactionsToLocalStorage()
+
   toast.success('Transaction deleted')
+}
+
+// Save to LocalStorage
+
+const saveTransactionsToLocalStorage = () => {
+  localStorage.setItem('transactions', JSON.stringify(transactions.value))
 }
 </script>
 
